@@ -24,19 +24,19 @@ class Signup extends Component {
 
   submitForm = async (event) => {
     event.preventDefault();
-    const { username, password } = this.state;
-    const userDetails = { username, password };
-    const url = "https://apis.ccbp.in/login";
-    const options = {
-      method: "POST",
-      body: JSON.stringify(userDetails),
-    };
-    const response = await fetch(url, options);
-    const data = await response.json();
-    if (response.ok === true) {
-      this.onSubmitSuccess(data.jwt_token);
+    const { newPassword, password } = this.state;
+    // const userDetails = { username, password };
+    // const url = "https://apis.ccbp.in/login";
+    // const options = {
+    //   method: "POST",
+    //   body: JSON.stringify(userDetails),
+    // };
+    // const response = await fetch(url, options);
+    // const data = await response.json();
+    if (password === newPassword) {
+      this.onSubmitSuccess();
     } else {
-      this.onSubmitFailure(data.error_msg);
+      this.onSubmitFailure("Password Not Matched");
     }
   };
 
