@@ -1,7 +1,7 @@
 import { Component } from "react";
 import Cookies from "js-cookie";
 
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 
 class Signup extends Component {
   state = {
@@ -14,9 +14,8 @@ class Signup extends Component {
   };
 
   onSubmitSuccess = (jwtToken) => {
-    Cookies.set("jwt_token", jwtToken, { expires: 30 });
     const { history } = this.props;
-    history.replace("/");
+    history.replace("/login");
   };
 
   onSubmitFailure = (errorMsg) => {
@@ -66,9 +65,6 @@ class Signup extends Component {
     } = this.state;
     const jwtToken = Cookies.get("jwt_token");
 
-    if (jwtToken !== undefined) {
-      return <Redirect to="/" />;
-    }
     return (
       <div className="login-bg-container">
         <img
@@ -123,6 +119,12 @@ class Signup extends Component {
             <button type="submit" className="login-button">
               Login
             </button>
+            <p>
+              Already have an account{" "}
+              <span>
+                <Link to="/login">Login</Link>
+              </span>
+            </p>
           </form>
         </div>
       </div>

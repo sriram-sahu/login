@@ -144,3 +144,9 @@
     margin-top: 0px;
   }
 }
+
+span{
+  color:blue;
+  font-weight:bold;
+  font-size:20px;
+}

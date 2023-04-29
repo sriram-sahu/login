@@ -1,7 +1,7 @@
 import { Component } from "react";
 import Cookies from "js-cookie";
 
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 
 class Login extends Component {
   state = {
@@ -88,6 +88,12 @@ class Login extends Component {
             <button type="submit" className="login-button">
               Login
             </button>
+            <p>
+              Don't have an account{" "}
+              <span>
+                <Link to="/signup">Signup</Link>
+              </span>
+            </p>
           </form>
         </div>
       </div>
